@@ -17,7 +17,7 @@ export default function LandingPage() {
           Landing Page
           <button
             onClick={() => signIn('github')}
-            className="block underline text-blue-600"
+            className="block text-blue-600 underline"
           >
             Log In
           </button>

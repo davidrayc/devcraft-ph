@@ -13,5 +13,11 @@ export default async function PrivateLayout({
 
   if (!session) redirect('/');
 
-  return <>{children}</>;
+    return (
+        <>
+            {/* I ASSUME THIS IS DECLARE BEFORE THE CHILDREN PROP */}
+            {/* <Nav/> */}
+            {children}
+        </>
+    );
 }

@@ -26,6 +26,8 @@ Must be one of the following:
 Use the summary field to provide a short description of the change:
 
 - use the imperative, present tense: "fix" not "fixed" nor "fixes"
+- don't capitalize the first letter
+- no dot (.) at the end
 
 #### Commit Message Body
 
@@ -36,3 +38,25 @@ This commit message should explain why you are making the change.
 #### References
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+## Branching Message Format
+
+#### Branch Title
+
+```
+<type>(name)/branch-name
+```
+
+#### Type
+
+Must be a valid [type](#type).
+
+#### Name
+
+Something to identify you; does not have to be your real name.
+
+#### Branch Name
+
+Must follow this [rules](#summary).
+
+Use kebab-case for space.

@@ -1,8 +1,8 @@
 import type { Config } from 'drizzle-kit';
 
 export default {
-  schema: './db/drizzle/schema',
-  out: './drizzle/migrations',
+  schema: './db/drizzle/schema/*.ts',
+  out: './db/drizzle/migrations',
   driver: 'pg',
   dbCredentials: {
     host: process.env.DATABASE_HOST!,
@@ -11,4 +11,6 @@ export default {
     password: process.env.DATABASE_PASSWORD!,
     database: process.env.DATABASE_NAME!,
   },
+  verbose: true,
+  strict: true,
 } satisfies Config;

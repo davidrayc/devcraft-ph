@@ -1,9 +1,9 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, serial, varchar } from 'drizzle-orm/pg-core';
-import { manager } from './manager';
+import { managers } from './managers';
 import { users } from './users';
 
-export const audit_history = pgTable('audit_history', {
+export const audit_histories = pgTable('audit_histories', {
   id: serial('id').primaryKey(),
   user_id: varchar('user_id', { length: 256 }),
   item_id: varchar('manager_id', { length: 256 }),

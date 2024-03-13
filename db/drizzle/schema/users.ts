@@ -1,8 +1,8 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, serial, varchar } from 'drizzle-orm/pg-core';
-import { admin } from './admin';
-import { employee } from './employee';
-import { manager } from './manager';
+import { admins } from './admins';
+import { employees } from './employees';
+import { managers } from './managers';
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),

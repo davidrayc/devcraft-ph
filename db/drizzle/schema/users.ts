@@ -13,9 +13,9 @@ export const users = pgTable('users', {
   password: varchar('password', { length: 256 }),
 });
 
-//ONE-TO-MANY RELATIONS
+//RELATIONS
 export const usersRelations = relations(users, ({ many }) => ({
-  admin: many(admin),
-  manager: many(manager),
-  employee: many(employee),
+  admins: many(admins),
+  managers: many(managers),
+  employees: many(employees),
 }));

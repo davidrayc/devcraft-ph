@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710335494942,
+      "tag": "0000_skinny_veda",
+      "breakpoints": true
+    }
+  ]
+}

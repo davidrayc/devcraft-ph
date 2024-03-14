@@ -2,6 +2,12 @@ const UserModal = () => {
   return (
     <div className="modal mx-auto mt-36 flex h-1/2 w-1/4 flex-col items-center space-y-2">
       <div className="flex w-full justify-between">
+        <label htmlFor="Email" className="py-2 pr-4">
+          Email
+        </label>
+        <input type="email" id="Email" className="border p-2" />
+      </div>
+      <div className="flex w-full justify-between">
         <label htmlFor="First-Name" className="py-2 pr-4">
           First Name
         </label>

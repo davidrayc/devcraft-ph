@@ -4,8 +4,10 @@ import { employees } from './employees';
 import { users } from './users';
 
 export const managers = pgTable('managers', {
-  id: serial('id').primaryKey(),
-  user_id: integer('user_id').references(() => managers.id),
+  id: serial('id').primaryKey().notNull(),
+  user_id: integer('user_id')
+    .references(() => managers.id)
+    .notNull(),
 });
 
 //RELATIONS

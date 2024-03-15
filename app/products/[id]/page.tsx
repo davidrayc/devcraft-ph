@@ -36,7 +36,7 @@ export default function ProductPage() {
     ]
   }
 
-  const { name, itemCode, quantity, auditTrailListItems } = dummyProduct
+  const { name, itemCode, quantity, auditTrailListItems } = dummyProduct;
 
   return (
     <div>
@@ -53,11 +53,16 @@ export default function ProductPage() {
         <div className="rounded-xl border border-gray-300 text-xl max-w-4xl w-full mt-12 py-12 px-20">
           <ul className="flex flex-col w-full">
             {auditTrailListItems.map((item, index) => (
-              <ProductAuditTrailListItem key={item.id} index={index} item={item} totalItemCount={auditTrailListItems.length - 1} />
+              <ProductAuditTrailListItem
+                key={item.id}
+                index={index}
+                item={item}
+                totalItemCount={auditTrailListItems.length - 1}
+              />
             ))}
           </ul>
         </div>
       </div>
     </div>
-  )
+  );
 }

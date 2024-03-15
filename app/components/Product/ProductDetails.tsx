@@ -16,7 +16,7 @@ const ProductDetails = ({ itemCode, quantity }: ProductDetailsProps) => {
         <div>{quantity}</div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductDetails;

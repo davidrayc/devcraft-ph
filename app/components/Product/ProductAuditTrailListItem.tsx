@@ -22,7 +22,7 @@ const ProductAuditTrailListItem = ({ index, item, totalItemCount }: ProductAudit
         {item.description}
       </div>
     </li>
-  )
+  );
 }
 
 export default ProductAuditTrailListItem;

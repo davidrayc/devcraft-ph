@@ -22,6 +22,13 @@
       "when": 1710415069658,
       "tag": "0002_lethal_tombstone",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1710479718252,
+      "tag": "0003_pale_scourge",
+      "breakpoints": true
     }
   ]
 }

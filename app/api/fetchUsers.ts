@@ -1,7 +1,7 @@
 import { db } from '@/db/drizzle/db';
-import { users } from '@/db/drizzle/schema/users';
+import { user } from '@/db/drizzle/schema/user';
 
 export default async function fetchUsers() {
-  const result = await db.select().from(users);
+  const result = await db.select().from(user);
   return result;
 }

@@ -1,8 +1,8 @@
 import { relations } from 'drizzle-orm';
 import { date, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
-import { audit_histories } from './audit_histories';
+import { audit_history } from './audit_history';
 
-export const items = pgTable('items', {
+export const item = pgTable('item', {
   id: serial('id').primaryKey().notNull(),
   item_code: varchar('code', { length: 10 }).notNull(),
   item_name: varchar('name', { length: 256 }).notNull(),
@@ -12,6 +12,6 @@ export const items = pgTable('items', {
 });
 
 //RELATIONS
-export const itemsRelations = relations(items, ({ many }) => ({
-  audit_histories: many(audit_histories),
+export const itemRelations = relations(item, ({ many }) => ({
+  audit_history: many(audit_history),
 }));

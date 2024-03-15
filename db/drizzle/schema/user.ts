@@ -1,11 +1,11 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, serial, varchar } from 'drizzle-orm/pg-core';
-import { admins } from './admins';
-import { audit_histories } from './audit_histories';
-import { employees } from './employees';
-import { managers } from './managers';
+import { admin } from './admin';
+import { audit_history } from './audit_history';
+import { employee } from './employee';
+import { manager } from './manager';
 
-export const users = pgTable('users', {
+export const user = pgTable('user', {
   id: serial('id').primaryKey().notNull(),
   employee_id: varchar('employee_id', { length: 256 }).notNull(),
   first_name: varchar('first_name', { length: 256 }).notNull(),
@@ -15,9 +15,9 @@ export const users = pgTable('users', {
 });
 
 //RELATIONS
-export const usersRelations = relations(users, ({ many }) => ({
-  admins: many(admins),
-  managers: many(managers),
-  employees: many(employees),
-  audit_histories: many(audit_histories),
+export const userRelations = relations(user, ({ many }) => ({
+  admin: many(admin),
+  manager: many(manager),
+  employee: many(employee),
+  audit_history: many(audit_history),
 }));

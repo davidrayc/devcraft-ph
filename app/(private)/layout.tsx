@@ -1,5 +1,4 @@
 // 'use client';
-// import { useSession } from 'next-auth/react';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 

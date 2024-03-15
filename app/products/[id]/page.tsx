@@ -1,4 +1,22 @@
+import ProductDetails from '../../components/Product/ProductDetails'
+import ProductAuditTrailListItem from '../../components/Product/ProductAuditTrailListItem'
+
 export default function ProductPage({ params }: { params: { id: string } }) {
+  const productAuditTrailListItems = [
+    {
+      id: 0,
+      description: "User A decreased the quantity of product A"
+    },
+    {
+      id: 1,
+      description: "User B decreased the quantity of product A"
+    },
+    {
+      id: 2,
+      description: "User C decreased the quantity of product A"
+    },
+  ]
+
   return (
     <div>
       <div className="flex flex-col items-center">
@@ -8,57 +26,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <div>
             <div className="text-6xl font-bold">Product Name</div>
 
-            <div className="flex flex-col gap-y-6 mt-6">
-              <div className="text-xl">
-                <div className="font-bold">Item code</div>
-                <div>_item_code</div>
-              </div>
-
-              <div className="text-xl">
-                <div className="font-bold">Quantity</div>
-                <div>_quantity</div>
-              </div>
-            </div>
+            <ProductDetails itemCode="_item_code" quantity={0} />
           </div>
         </div>
 
         <div className="rounded-xl border border-gray-300 text-xl max-w-4xl w-full mt-12 py-12 px-20">
           <ul className="flex flex-col w-full">
-            <li className="flex gap-x-4 items-center h-12">
-              <div className="flex flex-col h-full items-center">
-                <div className="grow bg-none w-1"></div>
-                <div className="rounded-full bg-gray-300 w-3 h-3 my-1"></div>
-                <div className="grow bg-gray-300 w-1"></div>
-              </div>
-
-              <div>
-                User A decreased the quantity of product A
-              </div>
-            </li>
-
-            <li className="flex gap-x-4 items-center h-12">
-              <div className="flex flex-col h-full items-center">
-                <div className="grow bg-gray-300 w-1"></div>
-                <div className="rounded-full bg-gray-300 w-3 h-3 my-1"></div>
-                <div className="grow bg-gray-300 w-1"></div>
-              </div>
-
-              <div>
-                User B decreased the quantity of product A
-              </div>
-            </li>
-
-            <li className="flex gap-x-4 items-center h-12">
-              <div className="flex flex-col h-full items-center">
-                <div className="grow bg-gray-300 w-1"></div>
-                <div className="rounded-full bg-gray-300 w-3 h-3 my-1"></div>
-                <div className="grow bg-none w-1"></div>
-              </div>
-
-              <div>
-                User C decreased the quantity of product A
-              </div>
-            </li>
+            {productAuditTrailListItems.map((item, index) => (
+              <ProductAuditTrailListItem key={item.id} index={index} item={item} totalItemCount={productAuditTrailListItems.length - 1} />
+            ))}
           </ul>
         </div>
       </div>

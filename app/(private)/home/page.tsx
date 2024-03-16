@@ -1,4 +1,5 @@
-import CreateuserBtn from '@/app/components/CreateuserBtn';
+import { Button as CreateUserBtn } from '@/app/components/Button';
+
 import Modal from '@/app/components/Modal';
 import Link from 'next/link';
 
@@ -6,7 +7,11 @@ export default function Home() {
   return (
     <main>
       <div className="container mx-auto p-10">
-        <CreateuserBtn />
+        <CreateUserBtn
+          elTag="linkTag"
+          title="crate a user"
+          btnStyles="rounded-full bg-blue-500 px-4 py-2 font-bold capitalize text-white hover:bg-blue-700"
+        />
         <Modal />
       </div>
 

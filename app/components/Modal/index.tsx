@@ -5,7 +5,7 @@ import CreateUserForm from '../CreateUserForm';
 export default function Modal() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const modal = searchParams.get('createuser');
+  let modal = Boolean(searchParams.get('createuser'));
   const pathname = usePathname();
 
   function handleClick(e: React.MouseEvent<HTMLDivElement>) {
@@ -19,7 +19,7 @@ export default function Modal() {
     <>
       {modal && (
         <div
-          className="z-9  relative"
+          className="z-9 relative"
           aria-labelledby="modal-title"
           role="dialog"
           aria-modal="true"

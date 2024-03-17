@@ -50,6 +50,13 @@
       "when": 1710694011689,
       "tag": "0006_tiny_vargas",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1710695078811,
+      "tag": "0007_thin_patriot",
+      "breakpoints": true
     }
   ]
 }

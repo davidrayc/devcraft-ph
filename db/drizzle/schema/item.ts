@@ -6,7 +6,7 @@ export const item = pgTable('item', {
   id: serial('id').primaryKey().notNull(),
   item_code: varchar('code', { length: 10 }).notNull(),
   item_name: varchar('name', { length: 256 }).notNull(),
-  quantity: integer('quantity'),
+  quantity: integer('quantity').notNull(),
   ageing: date('date'),
   description: text('description'),
   img_path: varchar('image_path', { length: 256 }),

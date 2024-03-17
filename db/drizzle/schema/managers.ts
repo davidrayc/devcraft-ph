@@ -1,17 +1,15 @@
 import { relations } from 'drizzle-orm';
-import { integer, pgTable, serial } from 'drizzle-orm/pg-core';
-import { employee } from './employee';
-import { user } from './user';
+import { pgTable, integer, serial } from 'drizzle-orm/pg-core';
+import { employees } from './employees';
+import { users } from './users';
 
-export const manager = pgTable('manager', {
+export const managers = pgTable('managers', {
   id: serial('id').primaryKey().notNull(),
-  user_id: integer('user_id')
-    .references(() => manager.id)
-    .notNull(),
+  userId: integer('user_id').references(() => managers.id).notNull(),
 });
 
 //RELATIONS
-export const managerRelations = relations(manager, ({ one, many }) => ({
-  employee: many(employee),
-  user: one(user, { fields: [manager.user_id], references: [user.id] }),
+export const managerRelations = relations(managers, ({ one, many }) => ({
+  employees: many(employees),
+  user: one(users, { fields: [managers.userId], references: [users.id] }),
 }));

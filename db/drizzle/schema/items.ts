@@ -1,17 +1,17 @@
 import { relations } from 'drizzle-orm';
-import { date, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
-import { audit_history } from './audit_history';
+import { pgTable, date, serial, text, varchar } from 'drizzle-orm/pg-core';
+import { auditHistories } from './audit-histories';
 
-export const item = pgTable('item', {
+export const items = pgTable('items', {
   id: serial('id').primaryKey().notNull(),
-  item_code: varchar('code', { length: 10 }).notNull(),
-  item_name: varchar('name', { length: 256 }).notNull(),
+  code: varchar('code', { length: 10 }).notNull(),
+  name: varchar('name', { length: 256 }).notNull(),
   ageing: date('date'),
   description: text('description'),
-  img_path: varchar('image_path', { length: 256 }),
+  imagePath: varchar('image_path', { length: 256 }),
 });
 
 //RELATIONS
-export const itemRelations = relations(item, ({ many }) => ({
-  audit_history: many(audit_history),
+export const itemRelations = relations(items, ({ many }) => ({
+  auditHistories: many(auditHistories),
 }));

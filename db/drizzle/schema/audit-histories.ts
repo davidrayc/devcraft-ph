@@ -5,8 +5,8 @@ import { users } from './users';
 
 export const auditHistories = pgTable('audit_histories', {
   id: serial('id').primaryKey().notNull(),
-  user_id: varchar('user_id', { length: 256 }).notNull(),
-  item_id: varchar('item_id', { length: 256 }).notNull(),
+  userId: integer('user_id', { length: 256 }).notNull(),
+  itemId: integer('item_id', { length: 256 }).notNull(),
 });
 
 //RELATIONS

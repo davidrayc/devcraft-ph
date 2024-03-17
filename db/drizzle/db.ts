@@ -2,7 +2,6 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 
 import * as adminsSchema from './schema/admins';
-import * as schema from './schema/schema'
 import * as auditHistoriesSchema from './schema/audit-histories';
 import * as employeesSchema from './schema/employees';
 import * as itemsSchema from './schema/items';

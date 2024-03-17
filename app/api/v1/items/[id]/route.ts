@@ -1,8 +1,8 @@
 import { db } from '@/db/drizzle/db';
-import { items } from '@/db/drizzle/schema/items';
-import { eq } from 'drizzle-orm';
 
-import { notFound } from "next/navigation";
+// Uncomment if using `select` for querying
+// import { items } from '@/db/drizzle/schema/items';
+// import { eq } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
 

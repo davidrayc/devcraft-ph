@@ -1,12 +1,12 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 
-import * as adminsSchema from './schema/admins';
-import * as auditHistoriesSchema from './schema/audit-histories';
-import * as employeesSchema from './schema/employees';
-import * as itemsSchema from './schema/items';
-import * as managersSchema from './schema/managers';
-import * as usersSchema from './schema/users';
+import * as admin from './schema/admin';
+import * as auditHistory from './schema/audit-history';
+import * as employee from './schema/employee';
+import * as item from './schema/item';
+import * as manager from './schema/manager';
+import * as user from './schema/user';
 
 const pool = new Pool({
   host: process.env.DATABASE_HOST!,
@@ -19,11 +19,11 @@ const pool = new Pool({
 // { schema } is used for relational queries
 export const db = drizzle(pool, {
   schema: {
-    ...adminsSchema,
-    ...auditHistoriesSchema,
-    ...employeesSchema,
-    ...itemsSchema,
-    ...managersSchema,
-    ...usersSchema,
+    ...admin,
+    ...auditHistory,
+    ...employee,
+    ...item,
+    ...manager,
+    ...user,
   }
 });

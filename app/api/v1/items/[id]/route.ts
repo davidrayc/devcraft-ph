@@ -1,7 +1,7 @@
 import { db } from '@/db/drizzle/db';
 
 // Uncomment if using `select` for querying
-// import { items } from '@/db/drizzle/schema/items';
+// import { item } from '@/db/drizzle/schema/item';
 // import { eq } from 'drizzle-orm';
 
 export const dynamic = 'force-dynamic';
@@ -12,19 +12,19 @@ export async function GET(request: Request, { params }: { params: { id: number }
   // TODO: consider moving queries into a library
 
   // Query using select
-  // const result = await db.select().from(items).where(eq(items.id, id));
+  // const result = await db.select().from(item).where(eq(item.id, id));
 
   // Query using findFirst
-  const result = await db.query.items.findFirst({
-    where: (items, { eq }) => eq(items.id, id),
+  const result = await db.query.item.findFirst({
+    where: (item, { eq }) => eq(item.id, id),
     with: {
       // Include relation
       // with: {
-      //   auditHistories: true,
+      //   auditHistory: true,
       // }
 
       // Include nested relations
-      auditHistories: {
+      auditHistory: {
         with: {
           // Select all
           // user: true,

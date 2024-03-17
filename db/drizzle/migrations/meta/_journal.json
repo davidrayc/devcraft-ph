@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1710335494942,
-      "tag": "0000_skinny_veda",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1710412155437,
-      "tag": "0001_clean_pete_wisdom",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1710415069658,
-      "tag": "0002_lethal_tombstone",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1710479718252,
-      "tag": "0003_pale_scourge",
+      "when": 1710682474040,
+      "tag": "0000_smooth_the_phantom",
       "breakpoints": true
     }
   ]

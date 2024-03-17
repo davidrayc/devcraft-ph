@@ -1,11 +1,11 @@
 {
-  "id": "1fa22104-5678-4182-b4e3-b49b175b91e4",
+  "id": "5d0de64c-a531-4994-bd1c-e197033f514d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "admins": {
-      "name": "admins",
+    "admin": {
+      "name": "admin",
       "schema": "",
       "columns": {
         "id": {
@@ -14,21 +14,21 @@
           "primaryKey": true,
           "notNull": true
         },
-        "user_id": {
-          "name": "user_id",
+        "userId": {
+          "name": "userId",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "admins_user_id_users_id_fk": {
-          "name": "admins_user_id_users_id_fk",
-          "tableFrom": "admins",
-          "tableTo": "users",
+        "admin_userId_user_id_fk": {
+          "name": "admin_userId_user_id_fk",
+          "tableFrom": "admin",
+          "tableTo": "user",
           "columnsFrom": [
-            "user_id"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -40,8 +40,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "audit_histories": {
-      "name": "audit_histories",
+    "auditHistory": {
+      "name": "auditHistory",
       "schema": "",
       "columns": {
         "id": {
@@ -50,17 +50,17 @@
           "primaryKey": true,
           "notNull": true
         },
-        "user_id": {
-          "name": "user_id",
-          "type": "varchar(256)",
+        "userId": {
+          "name": "userId",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "manager_id": {
-          "name": "manager_id",
-          "type": "varchar(256)",
+        "itemId": {
+          "name": "itemId",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
@@ -68,8 +68,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "employees": {
-      "name": "employees",
+    "employee": {
+      "name": "employee",
       "schema": "",
       "columns": {
         "id": {
@@ -78,14 +78,14 @@
           "primaryKey": true,
           "notNull": true
         },
-        "user_id": {
-          "name": "user_id",
+        "userId": {
+          "name": "userId",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "manager_id": {
-          "name": "manager_id",
+        "managerId": {
+          "name": "managerId",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -93,12 +93,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "employees_user_id_users_id_fk": {
-          "name": "employees_user_id_users_id_fk",
-          "tableFrom": "employees",
-          "tableTo": "users",
+        "employee_userId_user_id_fk": {
+          "name": "employee_userId_user_id_fk",
+          "tableFrom": "employee",
+          "tableTo": "user",
           "columnsFrom": [
-            "user_id"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -106,12 +106,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "employees_manager_id_managers_id_fk": {
-          "name": "employees_manager_id_managers_id_fk",
-          "tableFrom": "employees",
-          "tableTo": "managers",
+        "employee_managerId_manager_id_fk": {
+          "name": "employee_managerId_manager_id_fk",
+          "tableFrom": "employee",
+          "tableTo": "manager",
           "columnsFrom": [
-            "manager_id"
+            "managerId"
           ],
           "columnsTo": [
             "id"
@@ -123,8 +123,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "items": {
-      "name": "items",
+    "item": {
+      "name": "item",
       "schema": "",
       "columns": {
         "id": {
@@ -137,13 +137,13 @@
           "name": "code",
           "type": "varchar(10)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "name": {
           "name": "name",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "date": {
           "name": "date",
@@ -157,8 +157,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "image_path": {
-          "name": "image_path",
+        "imagePath": {
+          "name": "imagePath",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": false
@@ -169,8 +169,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "managers": {
-      "name": "managers",
+    "manager": {
+      "name": "manager",
       "schema": "",
       "columns": {
         "id": {
@@ -179,21 +179,21 @@
           "primaryKey": true,
           "notNull": true
         },
-        "user_id": {
-          "name": "user_id",
+        "userId": {
+          "name": "userId",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "managers_user_id_managers_id_fk": {
-          "name": "managers_user_id_managers_id_fk",
-          "tableFrom": "managers",
-          "tableTo": "managers",
+        "manager_userId_manager_id_fk": {
+          "name": "manager_userId_manager_id_fk",
+          "tableFrom": "manager",
+          "tableTo": "manager",
           "columnsFrom": [
-            "user_id"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -205,8 +205,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "users": {
-      "name": "users",
+    "user": {
+      "name": "user",
       "schema": "",
       "columns": {
         "id": {
@@ -215,20 +215,20 @@
           "primaryKey": true,
           "notNull": true
         },
-        "employee_id": {
-          "name": "employee_id",
+        "employeeId": {
+          "name": "employeeId",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "first_name": {
-          "name": "first_name",
+        "firstName": {
+          "name": "firstName",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "last_name": {
-          "name": "last_name",
+        "lastName": {
+          "name": "lastName",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": false
@@ -237,13 +237,13 @@
           "name": "email",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "password": {
           "name": "password",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},

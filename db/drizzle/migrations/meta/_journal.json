@@ -57,6 +57,13 @@
       "when": 1710695078811,
       "tag": "0007_thin_patriot",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1710696932074,
+      "tag": "0008_bouncy_wrecker",
+      "breakpoints": true
     }
   ]
 }

@@ -89,3 +89,38 @@ const ProductModal: React.FC<ProductModalProps> = ({ onClose }) => {
 };
 
 export default ProductModal;
+
+
+
+
+
+// // Paste Below for Product Modal Button (note: include on the the useEffect and useState)
+// to import paste this on the page (import ProductModal from '../app/components/ProductModal';)
+
+// export default function LandingPage() {
+//   const session = useSession();
+//   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+
+//   useEffect(() => {
+//     if (session.status === 'authenticated') redirect('/home');
+//   }, [session.status]);
+
+//   const handleOpenModal = () => {
+//     setIsModalOpen(true); // Open the modal
+//   };
+
+//   const handleCloseModal = () => {
+//     setIsModalOpen(false); // Close the modal
+//   };
+
+//   return (
+//     <main>
+//       <div className="flex justify-center items-center h-screen">
+//         <button className=" border border-green-600 text-black px-6 py-3 rounded-lg hover:bg-light-green" onClick={handleOpenModal}>
+//           Click here for Product Modal
+//         </button>
+//         {isModalOpen && <ProductModal onClose={handleCloseModal} />}
+//       </div>
+//     </main>
+//   );
+// }

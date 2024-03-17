@@ -1,24 +1,24 @@
 CREATE TABLE IF NOT EXISTS "admins" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"user_id" integer
+	"user_id" integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "audit_histories" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"user_id" varchar(256),
-	"manager_id" varchar(256)
+	"user_id" integer NOT NULL,
+	"item_id" integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "employees" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"user_id" integer,
+	"user_id" integer NOT NULL,
 	"manager_id" integer
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "items" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"code" varchar(10),
-	"name" varchar(256),
+	"code" varchar(10) NOT NULL,
+	"name" varchar(256) NOT NULL,
 	"date" date,
 	"description" text,
 	"image_path" varchar(256)
@@ -26,16 +26,16 @@ CREATE TABLE IF NOT EXISTS "items" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "managers" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"user_id" integer
+	"user_id" integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"employee_id" varchar(256),
-	"first_name" varchar(256),
+	"employee_id" varchar(256) NOT NULL,
+	"first_name" varchar(256) NOT NULL,
 	"last_name" varchar(256),
-	"email" varchar(256),
-	"password" varchar(256)
+	"email" varchar(256) NOT NULL,
+	"password" varchar(256) NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN

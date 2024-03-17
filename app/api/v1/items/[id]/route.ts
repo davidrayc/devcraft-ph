@@ -42,7 +42,6 @@ export async function GET(request: Request, { params }: { params: { id: number }
 
   if (result)
     return Response.json(result);
-  end
 
   return new Response(null, { status: 404 })
 }

@@ -4,8 +4,8 @@ import { audit_history } from './audit_history';
 
 export const item = pgTable('item', {
   id: serial('id').primaryKey().notNull(),
-  item_code: varchar('code', { length: 10 }).notNull(),
-  item_name: varchar('name', { length: 256 }).notNull(),
+  code: varchar('code', { length: 10 }).notNull(),
+  name: varchar('name', { length: 256 }).notNull(),
   quantity: varchar('quantity', { length: 10 }).notNull(),
   ageing: date('date'),
   description: text('description'),

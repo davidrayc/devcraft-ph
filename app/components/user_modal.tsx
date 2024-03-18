@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// FormField component
 const FormField = ({ id, label, type, onChange, value }) => (
   <div className="mb-4 flex justify-between">
     <label htmlFor={id} className="py-2 pr-4">
@@ -16,6 +17,7 @@ const FormField = ({ id, label, type, onChange, value }) => (
   </div>
 );
 
+// UserModal component
 const userModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
@@ -27,10 +29,12 @@ const userModal = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [showError, setShowError] = useState(false);
 
+  // Check if password and confirm password match
   useEffect(() => {
     setIsPasswordValid(password === confirmPassword);
   }, [password, confirmPassword]);
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !firstName || !lastName || !password || !confirmPassword) {
@@ -45,6 +49,7 @@ const userModal = () => {
     }
   };
 
+  // Clear form fields
   const handleCancel = () => {
     setEmail('');
     setFirstName('');
@@ -53,6 +58,7 @@ const userModal = () => {
     setConfirmPassword('');
   };
 
+  // Toggle modal
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };

@@ -12,7 +12,7 @@ export default function LandingPage() {
   useEffect(() => {
     if (session.status === 'authenticated') redirect('/home');
   }, [session.status]);
-  
+
   return (
     <main>
       <div>

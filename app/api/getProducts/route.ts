@@ -3,14 +3,10 @@ import postgres from '@/app/utils/postgres';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-
     try {
         const client = await postgres.connect();
 
-        const searchParams = request.nextUrl.searchParams;
-        const productName = searchParams.get('productName');
-        const itemCode = searchParams.get('itemCode');
-        const rawQuantity = searchParams.get('quantity');
+        const { productName, itemCode, quantity: rawQuantity } = await request.json();
         const quantity = rawQuantity ? parseInt(rawQuantity) : null;
 
         if (!productName || !itemCode || !quantity || quantity < 0) {

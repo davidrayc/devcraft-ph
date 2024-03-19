@@ -35,11 +35,13 @@ export async function GET(request: NextRequest) {
         const itemCode = realItemCode ? realItemCode.replace(/[^a-zA-Z]/g, '') : '';
         const id = parseInt(realItemCode.replace(/[^0-9]/g, '') || '');
 
-        // console.log(realItemCode);
-        // console.log(itemCode);
-        // console.log(id);
+        let result;
+        if (itemCode) {
+            result = await client.query(`SELECT * FROM item WHERE code = '${itemCode}' and id = ${id}`);
+        } else {
+            result = await client.query('SELECT * FROM item');
+        }
 
-        const result = itemCode ? await client.query(`SELECT * FROM item WHERE code = '${itemCode}' and id = ${id}`) : await client.query('SELECT * FROM item');
         client.release();
         return NextResponse.json(result.rows, { status: 200 });
     }

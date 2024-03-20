@@ -5,6 +5,7 @@ export default function CustomInput({ onChange, placeholder }) {
             type="text"
             onChange={onChange}
             placeholder={placeholder}
+            required
         />
     );
 }

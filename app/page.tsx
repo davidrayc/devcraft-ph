@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import Login from '../app/components/Login';
 
 
-
 export default function LandingPage() {
   const session = useSession();
 

@@ -20,14 +20,9 @@
     "react-hook-form": "^7.51.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/node": "~20.11.19",
-    "@types/react": "~18.2.56",
-=======
     "@types/node": "~20.11",
     "@types/pg": "^8.11.2",
     "@types/react": "~18.2",
->>>>>>> 06e7dd1ca69bd5449c50124250d5ad28cc19be13
     "@types/react-dom": "~18.2",
     "autoprefixer": "~10.4",
     "drizzle-kit": "^0.20.14",

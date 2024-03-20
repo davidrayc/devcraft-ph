@@ -1,8 +1,12 @@
 'use client'
 
-import CustomInput from "@/app/components/Products/CustomInput";
-import ProductProperty from "@/app/components/Products/ProductProperty";
-import { Product } from "@/app/components/Products/definition";
+// Components
+import GetComponent from "@/app/components/Products/GetComponent";
+import PostComponent from "@/app/components/Products/PostComponent";
+import ProductLabel from "@/app/components/Products/ProductLabel";
+import ProductTable from "@/app/components/Products/ProductTable";
+
+// Utility
 import { apiRequest } from "@/app/utils/apiRequest";
 import { useState } from "react";
 
@@ -16,13 +20,13 @@ export default function getProducts() {
 
     async function handlePost(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const data = await apiRequest('/api/products', 'POST', { productName, itemCode, quantity })
+        const data = await apiRequest('/api/products', 'POST', { productName, itemCode: itemCode.toUpperCase(), quantity })
         setProducts(data.rows);
     }
 
     async function handleGet(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        const data = await apiRequest(`/api/products?itemCode=${realItemCode}`, 'GET')
+        const data = await apiRequest(`/api/products?itemCode=${realItemCode.toUpperCase()}`, 'GET')
         setProducts(data);
     }
 
@@ -39,34 +43,13 @@ export default function getProducts() {
     return (
         <div className="flex flex-wrap justify-center place-items-center text-white">
             <div className="w-full flex flex-col items-center justify-center mt-20">
-                <form className="h-40 w-[700px] border border-black flex justify-center items-center text-black my-2" onSubmit={handlePost}>
-                    <CustomInput onChange={(e) => setProductName(e.target.value)} placeholder="Product Name" />
-                    <CustomInput onChange={(e) => setItemCode(e.target.value)} placeholder="Item Code" />
-                    <CustomInput onChange={(e) => setQuantity(parseInt(e.target.value))} placeholder="Quantity" />
-                    <button className={`w-20 h-10 bg-black text-white rounded-sm ${isPostValid ? 'cursor-pointer' : 'cursor-not-allowed'}`} disabled={!isPostValid} type="submit">POST</button>
-                </form>
-                <form className="h-40 w-[700px] border border-black flex justify-center items-center text-black my-2">
-                    <CustomInput onChange={(e) => setRealItemCode(e.target.value)} placeholder="Real Item Code" />
-                    <button className={`w-20 h-10 bg-black text-white rounded-sm ${isGetValid ? 'cursor-pointer' : 'cursor-not-allowed'} mr-2`} onClick={handleGet} disabled={!isGetValid}>GET</button>
-                    <button className="w-20 h-10 bg-black text-white rounded-sm cursor-pointer" onClick={handleGetAll}>GET ALL</button>
-                </form>
+                <PostComponent setProductName={setProductName} setItemCode={setItemCode} setQuantity={setQuantity} handlePost={handlePost} isPostValid={isPostValid} />
+                <GetComponent setRealItemCode={setRealItemCode} isGetValid={isGetValid} handleGet={handleGet} handleGetAll={handleGetAll} />
             </div>
             <main className="mt-10 w-[700px] border border-black flex p-5 text-black">
                 <div className="w-full flex flex-col justify-center">
-                    <ul className="w-full grid grid-cols-3 h-10 items-center px-4 text-xs">
-                        <ProductProperty label="Product Name" />
-                        <ProductProperty label="Product Code" />
-                        <ProductProperty label="Product Quantity" />
-                    </ul>
-                    {products.map((product: Product, index) => {
-                        return (
-                            <ul key={index} className="w-full grid grid-cols-3 h-10 items-center px-4 text-xs">
-                                <ProductProperty label={product.name} />
-                                <ProductProperty label={product.code} />
-                                <ProductProperty label={product.quantity} />
-                            </ul>
-                        )
-                    })}
+                    <ProductLabel />
+                    <ProductTable products={products} />
                 </div>
             </main>
         </div>

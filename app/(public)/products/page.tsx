@@ -1,8 +1,8 @@
 'use client'
 
-import CustomInput from "@/app/components/GetProducts/CustomInput";
-import ProductProperty from "@/app/components/GetProducts/ProductProperty";
-import { Product } from "@/app/components/GetProducts/definition";
+import CustomInput from "@/app/components/Products/CustomInput";
+import ProductProperty from "@/app/components/Products/ProductProperty";
+import { Product } from "@/app/components/Products/definition";
 import { apiRequest } from "@/app/utils/apiRequest";
 import { useState } from "react";
 
@@ -16,19 +16,19 @@ export default function getProducts() {
 
     async function handlePost(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const data = await apiRequest('/api/getProducts', 'POST', { productName, itemCode, quantity })
+        const data = await apiRequest('/api/products', 'POST', { productName, itemCode, quantity })
         setProducts(data.rows);
     }
 
     async function handleGet(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        const data = await apiRequest(`/api/getProducts?itemCode=${realItemCode}`, 'GET')
+        const data = await apiRequest(`/api/products?itemCode=${realItemCode}`, 'GET')
         setProducts(data);
     }
 
     async function handleGetAll(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        const data = await apiRequest('/api/getProducts', 'GET')
+        const data = await apiRequest('/api/products', 'GET')
         setProducts(data);
     }
 

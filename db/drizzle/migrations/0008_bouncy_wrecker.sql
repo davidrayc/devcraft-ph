@@ -1,0 +1,1 @@
+ALTER TABLE "item" ALTER COLUMN "quantity" SET DATA TYPE varchar(10);

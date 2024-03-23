@@ -1,14 +1,14 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, date, serial, text, varchar } from 'drizzle-orm/pg-core';
-import { auditHistory } from './audit-history';
-
+import { date, integer, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
+import { audit_history } from './audit_history';
 export const item = pgTable('item', {
   id: serial('id').primaryKey().notNull(),
   code: varchar('code', { length: 10 }).notNull(),
   name: varchar('name', { length: 256 }).notNull(),
+  quantity: integer('quantity').notNull(),
   ageing: date('date'),
-  description: text('description'),
-  imagePath: varchar('imagePath', { length: 256 }),
+  description: varchar('description', { length: 256 }),
+  img_path: varchar('image_path', { length: 256 }),
 });
 
 //RELATIONS

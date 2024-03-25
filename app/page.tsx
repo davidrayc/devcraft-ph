@@ -1,8 +1,9 @@
 'use client';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Login from '../app/components/Login';
+
 
 export default function LandingPage() {
   const session = useSession();
@@ -19,3 +20,8 @@ export default function LandingPage() {
     </main>
   );
 }
+
+
+
+
+

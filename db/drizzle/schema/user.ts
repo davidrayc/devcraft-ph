@@ -19,5 +19,5 @@ export const userRelations = relations(user, ({ many }) => ({
   admins: many(admin),
   managers: many(manager),
   employees: many(employee),
-  auditHistory: many(auditHistory),
+  auditHistories: many(auditHistory),
 }));

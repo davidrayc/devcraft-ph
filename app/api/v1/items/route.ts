@@ -1,7 +1,7 @@
 import { db } from '@/db/drizzle/db';
 import { item } from '@/db/drizzle/schema/item';
 import { format } from 'date-fns';
-import { ItemProps } from './definitions';
+import type { ItemProps } from './definitions';
 
 export const dynamic = 'force-dynamic';
 

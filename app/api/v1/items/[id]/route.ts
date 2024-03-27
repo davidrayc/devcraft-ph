@@ -1,47 +1,75 @@
 import { db } from '@/db/drizzle/db';
-
-// Uncomment if using `select` for querying
-// import { item } from '@/db/drizzle/schema/item';
-// import { eq } from 'drizzle-orm';
+import { item } from '@/db/drizzle/schema/item';
+import { format } from 'date-fns';
+import { eq } from 'drizzle-orm';
+import type { ItemProps } from '../definitions';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: Request, { params }: { params: { id: number } }) {
-  const id = parseInt(params.id);
+//FETCH ITEM FROM DB BY ID
+export async function GET(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const id = params.id;
 
-  // TODO: consider moving queries into a library
-
-  // Query using select
-  // const result = await db.select().from(item).where(eq(item.id, id));
-
-  // Query using findFirst
   const result = await db.query.item.findFirst({
     where: (item, { eq }) => eq(item.id, id),
     with: {
-      // Include relation
-      // with: {
-      //   auditHistory: true,
-      // }
-
-      // Include nested relations
-      auditHistory: {
+      auditHistories: {
         with: {
-          // Select all
-          // user: true,
-
-          // Exclude column
-          user: {
-            columns: {
-              password: false,
-            }
-          },
+          user: true,
+          item: true,
         },
       },
     },
   });
 
-  if (result)
-    return Response.json(result);
+  if (result) return Response.json(result);
+  return new Response(null, { status: 404 });
+}
 
-  return new Response(null, { status: 404 })
+//UPDATE ITEM FROM DB BY ID
+export async function PUT(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const id = params.id;
+  const requestItem: ItemProps = await request.json();
+
+  const updateItem = async (itemDetails: ItemProps) => {
+    const currentDate = new Date();
+    const formattedDate = format(currentDate, 'yyyy-MM-dd');
+
+    return db
+      .update(item)
+      .set({
+        name: itemDetails.name,
+        code: itemDetails.code,
+        quantity: itemDetails.quantity,
+        ageing: formattedDate,
+        description: itemDetails.description,
+        img_path: itemDetails.img_path,
+      })
+      .where(eq(item.id, id))
+      .returning();
+  };
+
+  const result = await updateItem(requestItem);
+
+  if (result) return Response.json(result);
+  return new Response(null, { status: 404 });
+}
+
+//DELETE ITEM FROM DB BY ID
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const id = params.id;
+
+  const result = await db.delete(item).where(eq(item.id, id));
+
+  if (result) return Response.json(result);
+  return new Response(null, { status: 404 });
 }

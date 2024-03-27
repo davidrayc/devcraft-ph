@@ -1,12 +1,12 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, serial, integer } from 'drizzle-orm/pg-core';
+import { integer, pgTable, serial } from 'drizzle-orm/pg-core';
 import { item } from './item';
 import { user } from './user';
 
 export const auditHistory = pgTable('auditHistory', {
   id: serial('id').primaryKey().notNull(),
-  userId: integer('userId', { length: 256 }).notNull(),
-  itemId: integer('itemId', { length: 256 }).notNull(),
+  userId: integer('userId').notNull(),
+  itemId: integer('itemId').notNull(),
 });
 
 //RELATIONS

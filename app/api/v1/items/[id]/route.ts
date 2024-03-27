@@ -60,3 +60,16 @@ export async function PUT(
   if (result) return Response.json(result);
   return new Response(null, { status: 404 });
 }
+
+//DELETE ITEM FROM DB BY ID
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const id = params.id;
+
+  const result = await db.delete(item).where(eq(item.id, id));
+
+  if (result) return Response.json(result);
+  return new Response(null, { status: 404 });
+}

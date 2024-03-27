@@ -3,7 +3,7 @@ import { integer, pgTable, serial } from 'drizzle-orm/pg-core';
 import { item } from './item';
 import { user } from './user';
 
-export const auditHistory = pgTable('audit-history', {
+export const auditHistory = pgTable('auditHistory', {
   id: serial('id').primaryKey().notNull(),
   userId: integer('userId').notNull(),
   itemId: integer('itemId').notNull(),

@@ -9,7 +9,7 @@ export const item = pgTable('item', {
   quantity: integer('quantity').notNull(),
   ageing: date('date'),
   description: varchar('description', { length: 256 }),
-  img_path: varchar('image_path', { length: 256 }),
+  img_path: varchar('imagePath', { length: 256 }),
 });
 
 //RELATIONS
